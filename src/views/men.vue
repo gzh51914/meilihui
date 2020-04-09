@@ -1,11 +1,11 @@
 <template>
     <div class="men">
-        <h1>men</h1>
+        <h1>123</h1>
     </div>
 </template>
 <script>
 export default {
-    
+
 }
 </script>
 <style lang="scss" scoped>
