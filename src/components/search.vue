@@ -23,31 +23,31 @@
             <router-link tag="li" to="/kids">婴童</router-link>
            <router-link tag="li" to="/upcoming">即将上新</router-link>
             </ul>
-          
+
         </nav>
     </div>
 </template>
 <script>
-import instance from "@/utils/http.js"
+// import instance from '@/utils/http.js'
 export default {
-    data(){
-        return {
-           navList:[],
-        }
-    },
-    created(){
-        instance.get("/appapi/silo/navigationAll/v3?timestamp=1586352610892&summary=c8e043409b12f3148c14a31a264fe1ca").then(res=>{
-            console.log(res.data.lists);
-            this.navList=res.data.lists
-        })
-    },
-    methods:{
-        home(){
-            this.$router.push('/home')
-        },        
+  data () {
+    return {
+      navList: []
     }
+  },
+  // created(){
+  //     instance.get("/appapi/silo/navigationAll/v3?timestamp=1586352610892&summary=c8e043409b12f3148c14a31a264fe1ca").then(res=>{
+  //         // console.log(res.data.lists);
+  //         this.navList=res.data.lists
+  //     })
+  // },
+  methods: {
+    home () {
+      this.$router.push('/home')
+    }
+  }
 }
-        
+
 </script>
 <style lang="scss" scoped>
 .search{
@@ -94,7 +94,7 @@ export default {
             display: flex;
             flex-direction: row;
             overflow-x: auto;
-             
+
         }
         li{
             margin-right: 0.3rem;
