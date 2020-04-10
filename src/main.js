@@ -9,7 +9,7 @@ import '@/stylesheets/main.scss'
 // 导入rem.js
 import '@/utils/rem.js'
 
-// 加载自定义指令
+// 加载自定义指令文件directive.js  ==Sia
 import '@/utils/directives'
 const routerPush = Router.prototype.push
 Router.prototype.push = function push (location) {
