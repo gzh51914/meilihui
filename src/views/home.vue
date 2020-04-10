@@ -56,7 +56,7 @@
 
 <script>
 import instance from '@/utils/http.js'
-import Swiper from '@/components/swiper.vue'
+import Swiper from '@/components/Swiper.vue'
 // import swipe from 'swiper'
 import List from '@/views/goodsList/goodslist'
 import More from '@/views/home/more'

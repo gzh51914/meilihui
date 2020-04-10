@@ -8479,7 +8479,7 @@ svgo@^1.0.0:
 
 swiper@^5.3.6:
   version "5.3.6"
-  resolved "https://registry.npm.taobao.org/swiper/download/swiper-5.3.6.tgz#102b7f8145d734ec4c30e04602160382356b5948"
+  resolved "https://registry.npm.taobao.org/swiper/download/swiper-5.3.6.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fswiper%2Fdownload%2Fswiper-5.3.6.tgz#102b7f8145d734ec4c30e04602160382356b5948"
   integrity sha1-ECt/gUXXNOxMMOBGAhYDgjVrWUg=
   dependencies:
     dom7 "^2.1.3"
