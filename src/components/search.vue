@@ -28,42 +28,23 @@
     </div>
 </template>
 <script>
-import { mapMutations } from 'vuex'
-import Vue from 'vue'
-// 封装自定义指令v-title
-Vue.directive('title', {
-  inserted (el, binding) {
-    el.style.backgroundColor = ''
-    el.style.color = 'white'
-    window.onscroll = () => {
-      if (
-        (document.body.scrollTop || document.documentElement.scrollTop) > binding.value) {
-        // el.style.opacity = 1
-        el.style.backgroundColor = 'white'
-        el.style.color = '#000'
-      } else {
-        // el.style.opacity = 1
-        el.style.backgroundColor = ''
-        el.style.color = 'white'
-      }
-    }
-  }
-  // unbind() {
-  //     window.onscroll = null
-  // }
-})
+import instance from '@/utils/http.js'
 export default {
   data () {
     return {
       navList: []
     }
   },
+  created () {
+    instance.get('/appapi/silo/navigationAll/v3?timestamp=1586352610892&summary=c8e043409b12f3148c14a31a264fe1ca').then(res => {
+      console.log(res.data.lists)
+      this.navList = res.data.lists
+    })
+  },
   methods: {
-    ...mapMutations([('Show')]),
-    more () {
-      this.$store.commit('Show')
+    home () {
+      this.$router.push('/home')
     }
-
   }
 }
 
@@ -79,6 +60,7 @@ export default {
     z-index: 20;
     left: 0;
     top: 0;
+    // background: white;
     .login{
         height: 0.4rem;
         display: flex;
@@ -95,8 +77,8 @@ export default {
             height: 0.35rem;
             border: 0;
             flex: 1;
-            background:#f5f5f5;
-            border-radius: 0.04rem;
+            opacity: 0.5;
+            margin-top: 0.1rem;
         }
         i{
             width: 0.57rem;
@@ -105,7 +87,7 @@ export default {
     }
     nav{
         height: 0.4rem;
-        // background: pink;
+        // background: white;
         display: flex;
         flex: 1;
         box-sizing: border-box;

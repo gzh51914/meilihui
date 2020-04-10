@@ -1,6 +1,7 @@
-import axios from "axios"
+import axios from 'axios'
 const instance = axios.create({
-    baseURL: 'http://www.mei.com', //基本的url
-    timeout: 2000, //延时默认3秒
-});
+  baseURL: 'http://www.mei.com', // 基本的url
+  timeout: 3000 // 延时默认3秒
+})
+
 export default instance

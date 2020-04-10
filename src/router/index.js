@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '@/views/home.vue'
-import crossborder from '@/views/crossborder'
 
 Vue.use(VueRouter)
 const routes = [{
@@ -14,15 +13,10 @@ const routes = [{
   component: Home
 },
 {
-  path: '/detial/:id',
-  name: 'detial',
-  component: () =>
-    import('@/views/Detial/detial'),
-  props: true
-},
-{
+  // 一起改为懒加载  == Sia
   path: '/crossborder',
-  component: crossborder
+  component: () =>
+    import('@/views/crossborder.vue')
 },
 {
   path: '/women',
