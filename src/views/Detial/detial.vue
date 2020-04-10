@@ -1,9 +1,13 @@
 <template>
      <div class="detailtitle">
+        <div class="title">
         <i  @click="handleBack">《==</i>
-        <span></span>
-        <span>{{this.$route.params.id}}</span>
-
+        <span>标题</span>
+        <span>...</span>
+        </div>
+        <div class="sort">
+          {{this.$route.params.id}}
+        </div>
     </div>
 </template>
 
@@ -50,6 +54,13 @@ export default {
     line-height: .44rem;
     text-align: center;
     z-index:12;
-    display: flex;
-    justify-content: space-between;}
+
+    .title{
+      display: flex;
+      justify-content: space-between;
+    }
+    .sort{
+      height: 0.3rem;
+    }
+  }
 </style>
