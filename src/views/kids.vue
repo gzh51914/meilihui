@@ -40,6 +40,7 @@
           <li
             v-for="data in list"
             :key="data.eventId"
+            @click="tolist(data.eventId)"
           >
           <div class="box">
             <img :src="data.imageUrl" alt="">
@@ -49,25 +50,33 @@
               <h5>{{data.discountText}}</h5>
             </div>
           </div>
-
           </li>
         </ul>
       </div>
+    <!-- 底部 -->
+    <Footer></Footer>
   </div>
 </template>
 
 <script>
 import instance from '@/utils/http.js'
 import Swiper from '@/components/Swiper'
+import Footer from '@/components/Footer.vue'
 export default {
   components: {
-    Swiper
+    Swiper,
+    Footer
   },
   data () {
     return {
       banners: [],
       list: [],
       nav: []
+    }
+  },
+  methods: {
+    tolist (id) {
+      this.$router.push(`/kidslist/${id}`)
     }
   },
   created () {
@@ -79,7 +88,7 @@ export default {
     // 分类数据
     instance.get('/appapi/cms/cmsDetail/v3?silo=2013000100000000005&ids=2120000100000000146&timestamp=1586355885762&summary=6c2c82ca611ef8a6c9bfc485a387a2f0&platform_code=H5').then(res => {
       this.nav = res.data.resultList[0].data
-      console.log(this.nav)
+      // console.log(this.nav)
     })
     // 列表数据
     instance.get('/appapi/silo/eventForH5?categoryId=kids&pageIndex=1&timestamp=1586355885561&summary=141c12d511d23f29783bf1c79a2ab9e9&platform_code=H5').then(res => {

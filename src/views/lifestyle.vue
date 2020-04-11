@@ -27,9 +27,17 @@
       <!-- 列表 -->
       <div class="list">
         <ul>
-          <li
+          <router-link
+            tag="li"
             v-for="data in list"
             :key="data.eventId"
+            :to="{
+              name:'lifelist',
+              params:{
+                id:data.eventId
+              }
+            }
+            "
           >
           <div class="box">
             <img :src="data.imageUrl" alt="">
@@ -39,20 +47,25 @@
               <h5>{{data.discountText}}</h5>
             </div>
           </div>
-
-          </li>
+          </router-link>
         </ul>
       </div>
+      <!-- 底部 -->
+      <Footer></Footer>
   </div>
 </template>
 
 <script>
 import instance from '@/utils/http.js'
 import Swiper from '@/components/Swiper'
+import Footer from '@/components/Footer.vue'
 export default {
   components: {
-    Swiper
+    Swiper,
+    Footer
   },
+  // 跳转页面  :id使用动态id  上面点击传参数  商品参数
+
   data () {
     return {
       banners: [],

@@ -13,19 +13,19 @@ Vue.directive('swiper', {
 })
 
 // //封装自定义指令v-title
-// Vue.directive("title", {
-//     inserted(el, binding) {
-//         el.style.opacity = 0
-//         window.onscroll = () => {
-//             if (
-//                 (document.body.scrollTop || document.documentElement.scrollTop) > binding.value) {
-//                 el.style.opacity = 1
-//             } else {
-//                 el.style.opacity = 0
-//             }
-//         }
-//     },
-//     unbind() {
-//         window.onscroll = null
-//     }
-// })
+Vue.directive('title', {
+  inserted (el, binding) {
+    el.style.opacity = 0
+    window.onscroll = () => {
+      if (
+        (document.body.scrollTop || document.documentElement.scrollTop) > binding.value) {
+        el.style.opacity = 1
+      } else {
+        el.style.opacity = 0
+      }
+    }
+  },
+  unbind () {
+    window.onscroll = null
+  }
+})
