@@ -8,7 +8,7 @@
 </template>
 
 <script>
-// 引入swiper的css样式
+// 引入swiper的css样式 改大写
 import 'swiper/css/swiper.min.css'
 export default {
   props: ['cName']
