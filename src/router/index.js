@@ -37,6 +37,12 @@ const routes = [{
 
 },
 {
+  name: 'menlist',
+  path: '/menlist/:id',
+  component: () => import('@/views/menlist/menlist'),
+  props: true
+},
+{
   path: '/cosmetics',
   component: () =>
     import('@/views/cosmetics.vue')
@@ -47,6 +53,27 @@ const routes = [{
   component: () =>
     import('@/views/lifestyle.vue')
 
+},
+// 家具列表页路由
+{
+  name: 'lifelist',
+  path: '/lifelist/:id',
+  component: () => import('@/views/lifelist/lifelist'),
+  props: true
+},
+// 家具详情页路由
+{
+  name: 'lifedetail',
+  path: '/lifelist/:id/:id2',
+  component: () => import('@/views/lifelist/lifedetail/lifedetial'),
+  props: true
+},
+// 婴儿列表页路由
+{
+  name: 'kidslist',
+  path: '/kidslist/:id',
+  component: () => import('@/views/kidslist/kidslist'),
+  props: true
 },
 {
   path: '/kids',

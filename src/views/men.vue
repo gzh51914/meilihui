@@ -6,6 +6,7 @@
           <li
             v-for="data in list"
             :key="data.eventId"
+            @click="tolist(data.eventId)"
           >
           <div class="box">
             <img :src="data.imageUrl" alt="">
@@ -26,6 +27,11 @@ export default {
   data () {
     return {
       list: []
+    }
+  },
+  methods: {
+    tolist (id) {
+      this.$router.push(`/menlist/${id}`)
     }
   },
   created () {

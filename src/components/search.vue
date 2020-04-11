@@ -37,7 +37,7 @@ export default {
   },
   created () {
     instance.get('/appapi/silo/navigationAll/v3?timestamp=1586352610892&summary=c8e043409b12f3148c14a31a264fe1ca').then(res => {
-      console.log(res.data.lists)
+      // console.log(res.data.lists)
       this.navList = res.data.lists
     })
   },
