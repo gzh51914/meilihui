@@ -3,6 +3,7 @@
     <div class="swiper-wrapper">
       <slot></slot>
     </div>
+    <div class="swiper-pagination"></div>
   </div>
 </template>
 

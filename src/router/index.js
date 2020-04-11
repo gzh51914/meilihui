@@ -13,6 +13,20 @@ const routes = [{
   component: Home
 },
 {
+  name: 'detial',
+  path: '/detial/:id',
+  component: () =>
+    import('@/views/Detial/detial'),
+  props: true
+},
+{
+  name: 'goodsInfo',
+  path: '/goodsInfo/:id2/:id',
+  component: () =>
+    import('@/views/Detial/goodsInfo'),
+  props: true
+},
+{
   // 一起改为懒加载  == Sia
   path: '/crossborder',
   component: () =>

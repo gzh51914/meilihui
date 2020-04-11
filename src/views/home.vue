@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <Swiper canme="swipe">
+    <Swiper cName="swipe">
       <div class="swiper-slide"
       v-for="(item,index) in imgList"
       :key="item.id"
@@ -51,6 +51,8 @@
     <List></List>
     <!-- 搜索页面 -->
     <More v-show="isShow"></More>
+    <!-- 底部页面 -->
+    <Footer></Footer>
   </div>
 </template>
 
@@ -59,6 +61,7 @@ import instance from '@/utils/http.js'
 import Swiper from '@/components/Swiper.vue'
 // import swipe from 'swiper'
 import List from '@/views/goodsList/goodslist'
+import Footer from '@/components/Footer.vue'
 import More from '@/views/home/more'
 import { mapState } from 'vuex'
 export default {
@@ -86,7 +89,8 @@ export default {
   components: {
     Swiper,
     List,
-    More
+    More,
+    Footer
   }
 }
 </script>

@@ -7,13 +7,6 @@ Vue.directive('swiper', {
       // eslint-disable-next-line
       new Swiper('.' + binding.value.swipe, { // 默认swiper执行3次，因为插入了3个swiper-slide的真实dom
         ...binding.value.free
-        // loop: true,
-        // pagination: {
-        //     el: ".swiper-pagination",
-        // },
-        // autoplay: {
-        //     delay: 2000
-        // },
       })
     }
   }

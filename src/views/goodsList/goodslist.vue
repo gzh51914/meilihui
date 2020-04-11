@@ -51,7 +51,7 @@ export default {
   },
   created () {
     instance.get('/appapi/home/eventForH5?params=%7B%7D&timestamp=1586349310741&summary=61cd01b7032ff8797d4f118e7f8448af&platform_code=H5').then(res => {
-      console.log(res.data.lists[0].events)
+      // console.log(res.data.lists[0].events)
       this.comeList = res.data.lists[0].events
       this.hotSale = res.data.lists[1].events
     })
