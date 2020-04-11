@@ -2,8 +2,8 @@
     <div class="search" v-title="20">
         <section class="login">
             <p>登陆</p>
-            <input type="text" class="txt" @click="more">
-            <i>取消</i>
+            <input type="text" class="txt" @click="more" placeholder="搜索.......">
+            <i class="iconfont icon-liwu"></i>
         </section>
         <nav>
             <!-- <p @click="home">推荐</p> -->
@@ -29,6 +29,29 @@
 </template>
 <script>
 import instance from '@/utils/http.js'
+import { mapMutations } from 'vuex'
+import Vue from 'vue'
+Vue.directive('title', {
+  inserted (el, binding) {
+    el.style.backgroundColor = ''
+    el.style.color = 'white'
+    window.onscroll = () => {
+      if (
+        (document.body.scrollTop || document.documentElement.scrollTop) > binding.value) {
+        // el.style.opacity = 1
+        el.style.backgroundColor = 'white'
+        el.style.color = '#000'
+      } else {
+        // el.style.opacity = 1
+        el.style.backgroundColor = ''
+        el.style.color = 'white'
+      }
+    }
+  },
+  unbind () {
+    window.onscroll = null
+  }
+})
 export default {
   data () {
     return {
@@ -37,13 +60,17 @@ export default {
   },
   created () {
     instance.get('/appapi/silo/navigationAll/v3?timestamp=1586352610892&summary=c8e043409b12f3148c14a31a264fe1ca').then(res => {
-      console.log(res.data.lists)
+      // console.log(res.data.lists)
       this.navList = res.data.lists
     })
   },
   methods: {
+    ...mapMutations([('Show')]),
     home () {
       this.$router.push('/home')
+    },
+    more () {
+      this.$store.commit('Show')
     }
   }
 }
@@ -60,6 +87,7 @@ export default {
     z-index: 20;
     left: 0;
     top: 0;
+    transition: all 0.5s ease;
     // background: white;
     .login{
         height: 0.4rem;
@@ -77,8 +105,10 @@ export default {
             height: 0.35rem;
             border: 0;
             flex: 1;
-            opacity: 0.5;
-            margin-top: 0.1rem;
+            background:#f5f5f5;
+            border-radius: 0.04rem;
+            padding-left: 0.2rem;
+            font-size: 0.13rem;
         }
         i{
             width: 0.57rem;
