@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <Swiper cName="swipe">
+    <Swiper canme="swipe">
       <div class="swiper-slide"
       v-for="(item,index) in imgList"
       :key="item.id"
@@ -51,8 +51,6 @@
     <List></List>
     <!-- 搜索页面 -->
     <More v-show="isShow"></More>
-    <!-- 底部页面 -->
-    <Footer></Footer>
   </div>
 </template>
 
@@ -61,7 +59,6 @@ import instance from '@/utils/http.js'
 import Swiper from '@/components/Swiper.vue'
 // import swipe from 'swiper'
 import List from '@/views/goodsList/goodslist'
-import Footer from '@/components/Footer.vue'
 import More from '@/views/home/more'
 import { mapState } from 'vuex'
 export default {
@@ -72,6 +69,7 @@ export default {
       show: false
     }
   },
+
   created () {
     instance.get('/appapi/home/mktBannerApp/v3?silo_id=2013000100000000008&platform_code=PLATEFORM_H5').then(res => {
       // console.log(res.data.banners);
@@ -88,8 +86,7 @@ export default {
   components: {
     Swiper,
     List,
-    More,
-    Footer
+    More
   }
 }
 </script>

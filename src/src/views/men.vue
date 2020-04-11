@@ -24,11 +24,6 @@
 <script>
 import instance from '@/utils/http.js'
 export default {
-  methods: {
-    tolist (id) {
-      this.$router.push(`/menlist/${id}`)
-    }
-  },
   data () {
     return {
       list: []

@@ -1,43 +1,45 @@
 <template>
   <div>
-      <div class="top">
-          <div class="header">
-              <i @click="back">回退</i>
-              <span><!-- {{data.chineseName}} --></span>
-              <span>功能</span>
+    <div class="top">
+      <div class="header">
+        <i @click="back" class="iconfont icon-icon-"></i>
+        <span>
+          <!-- {{data.chineseName}} -->
+        </span>
+        <span class="iconfont icon-gengduo"></span>
+      </div>
+      <div class="navs">
+        <ul>
+          <li @click="change1">人气</li>
+          <li @click="change2">折扣</li>
+          <li @click="change3">价格</li>
+          <li>筛选</li>
+        </ul>
+      </div>
+    </div>
+    <div class="nav">
+      <span>满折</span>
+      <span>焕新日男装一件8折</span>
+      <br />
+      <span>免运</span>
+      <span>满688元全场免运</span>
+    </div>
+    <div class="list">
+      <ul>
+        <li v-for="data in list" :key="data.glsCode" >
+          <div class="lifelist">
+            <img :src="data.imageUrl" alt />
+            <div class="box">
+              <p>{{data.brandName}}</p>
+              <p>{{data.productName}}</p>
+              <span>￥{{data.price}}</span>
+              <del>￥{{data.marketPrice}}</del>
+              <span>{{data.discount}}折</span>
+            </div>
           </div>
-          <div class="navs">
-              <ul>
-                  <li @click="change1">人气</li>
-                  <li @click="change2">折扣</li>
-                  <li @click="change3">价格</li>
-                  <li>筛选</li>
-              </ul>
-          </div>
-      </div>
-      <div class="nav">
-        <span>免运</span><span>满688元全场免运</span>
-      </div>
-      <div class="list">
-          <ul>
-              <li
-                v-for="data in list"
-                :key="data.glsCode"
-              >
-                <div class="lifelist">
-                    <img :src="data.imageUrl" alt="">
-                    <div class="box">
-                        <p>{{data.brandName}}</p>
-                        <p>{{data.productName}}</p>
-                        <span>￥{{data.price}}</span>
-                        <del>￥{{data.marketPrice}}</del>
-                        <span>{{data.discount}}折</span>
-                    </div>
-
-                </div>
-              </li>
-          </ul>
-      </div>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -77,7 +79,7 @@ export default {
     //     this.list=this.sort4
     // },
     back () {
-      this.$router.push('/kids')
+      this.$router.push('/men')
     }
 
   },
@@ -100,107 +102,111 @@ function sortByKey (array, key) {
   return array.sort(function (a, b) {
     var x = a[key]
     var y = b[key]
-    return ((x < y) ? -1 : ((x > y) ? 1 : 0))
+    return x < y ? -1 : x > y ? 1 : 0
   })
 }
 </script>
 
 <style lang="scss" scoped>
-.top{
+.top {
+  width: 100%;
+  height: 0.8rem;
+  .header,
+  .navs {
     width: 100%;
-    height: 0.8rem;
-    .header,.navs{
-        width: 100%;
-        height: 0.4rem;
+    height: 0.4rem;
+  }
+  .header {
+    display: flex;
+    i {
+      width: 0.5rem;
+      line-height: 100%;
+      height: 100%;
+      font-size: 26px;
     }
-    .header{
-        display: flex;
-        i{
-            width: 0.5rem;
-            line-height: 100%;
-            height: 100%;
-        }
-        span:nth-of-type(1){
-            flex:1;
-            text-align: center;
-            font-size: 18px;
-            font-weight: 700;
-        }
-        span:nth-of-type(2){
-            line-height: 100%;
-            width: 0.5rem;
-            font-size: 18px;
-        }
+    span:nth-of-type(1) {
+      flex: 1;
+      text-align: center;
+      font-size: 18px;
+      font-weight: 700;
     }
-    .navs{
-        ul{
-            display: flex;
-            li{
-                flex: 1;
-                text-align: center;
-                float: left;
-        }
-        }
+    span:nth-of-type(2) {
+      line-height: 100%;
+      width: 0.5rem;
+      font-size: 18px;
+      font-size: 26px;
     }
+  }
+  .navs {
+    ul {
+      display: flex;
+      li {
+        flex: 1;
+        text-align: center;
+        float: left;
+      }
+    }
+  }
 }
-.nav{
-    width: 3.45rem;
-    margin: auto;
-    span:nth-of-type(1){
-        border:1px red solid;
-        color: red;
-        font-size: 8px;
-    }
-    span:nth-of-type(2){
-        margin-left: 0.05rem;
-        font-size: 12px;
-    }
+.nav {
+  width: 3.45rem;
+  margin: auto;
+  span:nth-of-type(1),
+  span:nth-of-type(3) {
+    border: 1px red solid;
+    color: red;
+    font-size: 8px;
+  }
+  span:nth-of-type(2) {
+    margin-left: 0.05rem;
+    font-size: 12px;
+  }
 }
-.list{
-    ul{
-        display: flex;
-        flex-wrap: wrap;
-    }
-    li{
-        width: 50%;
-        height: 3rem;
-        .lifelist{
-            img{
-                display: block;
-                width: 1.65rem;
-                height: 2.2rem;
-                margin: auto;
-            }
-            .box{
-                width: 1.65rem;
-                margin: auto;
-                p{
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                }
-                p:nth-of-type(1){
-                    color:black;
-                    font-size: 12px;
-                    font-weight: 700;
-                }
-                p:nth-of-type(2){
-                    font-size: 12px;
-                }
-                span:nth-of-type(1){
-                    color:red;
-                    font-size: 12px;
-                }
-                span:nth-of-type(2){
-                    margin-left:0.5rem;
-                    font-size: 12px;
-                }
-                del{
-                    font-size: 12px;
-                    margin-left:0.1rem;
-                    color:#ccc;
-                }
-            }
+.list {
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  li {
+    width: 50%;
+    height: 3rem;
+    .lifelist {
+      img {
+        display: block;
+        width: 1.65rem;
+        height: 2.2rem;
+        margin: auto;
+      }
+      .box {
+        width: 1.65rem;
+        margin: auto;
+        p {
+          overflow: hidden;
+          text-overflow: ellipsis;
         }
+        p:nth-of-type(1) {
+          color: black;
+          font-size: 12px;
+          font-weight: 700;
+        }
+        p:nth-of-type(2) {
+          font-size: 12px;
+        }
+        span:nth-of-type(1) {
+          color: red;
+          font-size: 12px;
+        }
+        span:nth-of-type(2) {
+          margin-left: 0.5rem;
+          font-size: 12px;
+        }
+        del {
+          font-size: 12px;
+          margin-left: 0.1rem;
+          color: #ccc;
+        }
+      }
     }
+  }
 }
 </style>
