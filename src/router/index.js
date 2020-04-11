@@ -18,6 +18,15 @@ const routes = [{
   component: () =>
     import('@/views/crossborder.vue')
 },
+
+// 海外和美妆的列表页跳转 ==Sia
+{
+  name: 'productlists',
+  path: '/productlists/:id&:title',
+  component: () =>
+    import('@/views/productlists.vue'),
+  props: true
+},
 {
   path: '/women',
   component: () =>

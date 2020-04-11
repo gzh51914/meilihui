@@ -26,21 +26,30 @@
 
         <!-- 海外lists -->
         <div class="overseaLists">
-            <div
+            <router-link
                 class="lists"
                 v-for="(event) in lists"
                 :key="event.eventcode"
+                :to="{
+                    name:'productlists',
+                    params:{
+                        id:event.urlkey.split('-')[0],
+                        title:event.chineseName
+                        }
+                }"
+                tag="li"
             >
                 <img :src="event.imageUrl" alt="">
 
                 <div class="eDetail">
-                    <i>{{event.siloCategory + '直发'}}</i>
+                    <div>{{event.siloCategory === "海外" ?  event.siloCategory + '直发' : " "}}</div>
                     <p class="eDeTitle">{{event.englishName}}</p>
                     <p>{{event.chineseName}}</p>
                     <p>{{event.discountText}}</p>
                 </div>
-            </div>
+            </router-link>
         </div>
+
         <BottomF></BottomF>
     </div>
 
@@ -49,6 +58,7 @@
 import Swiper from '@/components/Swiper'
 import instance from '@/utils/http.js'
 import BottomF from '@/components/Footer'
+
 export default {
   components: {
     Swiper, // 注册组件Swiper
@@ -60,6 +70,7 @@ export default {
       lists: []
     }
   },
+
   created () {
     instance.get('/appapi/home/mktBannerApp/v3?silo_id=2013000100000000011&platform_code=PLATEFORM_H5').then(res => {
       this.banners = res.data.banners
@@ -67,6 +78,11 @@ export default {
     instance.get('/appapi/silo/eventForH5?categoryId=crossborder&pageIndex=1&timestamp=1586354575399&summary=1e06347a2a16159411ecbb990ab501c2&platform_code=H5').then(res => {
       this.lists = res.data.eventList
     })
+  },
+  methods: {
+    toDetail (id, title) {
+      this.$router.push(`/productlists/${id}&${title}`)
+    }
   }
 }
 </script>

@@ -37,10 +37,16 @@
 
         <!-- 美妆lists -->
         <div class="cosmeticsLists">
-            <div
+            <router-link
                 class="lists"
                 v-for="(event) in lists"
                 :key="event.eventcode"
+                :to="{
+                    name:'productlists',
+                    params:{id:event.urlkey.split('-')[0],
+                    title:event.chineseName}
+                }"
+                tag="li"
             >
                 <img :src="event.imageUrl" alt="">
 
@@ -50,7 +56,7 @@
                     <p>{{event.chineseName}}</p>
                     <p>{{event.discountText}}</p>
                 </div>
-            </div>
+            </router-link>
         </div>
         <!-- 底部 -->
         <BottomF></BottomF>
@@ -84,6 +90,11 @@ export default {
     instance.get('/appapi/cms/cmsDetail/v3?silo=2013000100000000003&ids=2042000100000000431&timestamp=1586355433603&summary=7fa0eb64b151704cdde8f4fa5535c9fa&platform_code=H5').then(res => {
       this.navs = res.data.resultList[0].data
     })
+  },
+  methods: {
+    toDetail (id, title) {
+      this.$router.push(`/productlists/${id}&${title}`)
+    }
   }
 }
 </script>
