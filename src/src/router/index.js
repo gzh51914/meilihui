@@ -24,13 +24,6 @@ const routes = [{
     import('@/views/women.vue')
 
 },
-// 女士列表页路由
-{
-  name: 'womenlist',
-  path: '/womenlist/:id',
-  component: () => import('@/views/womenlist/womenlist'),
-  props: true
-},
 {
   path: '/cosmetics',
   component: () =>
@@ -43,13 +36,6 @@ const routes = [{
     import('@/views/men.vue')
 
 },
-// 男士列表页路由
-{
-  name: 'menlist',
-  path: '/menlist/:id',
-  component: () => import('@/views/menlist/menlist'),
-  props: true
-},
 {
   path: '/cosmetics',
   component: () =>
@@ -61,6 +47,20 @@ const routes = [{
   component: () =>
     import('@/views/lifestyle.vue')
 
+},
+// 家具列表页路由
+{
+  name: 'lifelist',
+  path: '/lifelist/:id',
+  component: () => import('@/views/lifelist/lifelist'),
+  props: true
+},
+// 婴儿列表页路由
+{
+  name: 'kidslist',
+  path: '/kidslist/:id',
+  component: () => import('@/views/kidslist/kidslist'),
+  props: true
 },
 {
   path: '/kids',

@@ -69,6 +69,7 @@ export default {
       show: false
     }
   },
+
   created () {
     instance.get('/appapi/home/mktBannerApp/v3?silo_id=2013000100000000008&platform_code=PLATEFORM_H5').then(res => {
       // console.log(res.data.banners);
