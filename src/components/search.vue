@@ -6,13 +6,6 @@
             <i class="iconfont icon-liwu"></i>
         </section>
         <nav>
-            <!-- <p @click="home">推荐</p> -->
-            <!-- <router-link  to="/"
-            v-for="(item) in navList"
-            :key="item.categoryId"
-            >
-               {{item.name}}
-            </router-link> -->
             <ul>
             <router-link tag="li" to="/home" active-class="active">推荐</router-link>
             <router-link tag="li" to="/crossborder" active-class="active">海外</router-link>
@@ -38,11 +31,9 @@ Vue.directive('title', {
     window.onscroll = () => {
       if (
         (document.body.scrollTop || document.documentElement.scrollTop) > binding.value) {
-        // el.style.opacity = 1
         el.style.backgroundColor = 'white'
         el.style.color = '#000'
       } else {
-        // el.style.opacity = 1
         el.style.backgroundColor = ''
         el.style.color = 'white'
       }

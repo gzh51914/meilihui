@@ -51,7 +51,8 @@ const routes = [{
 {
   name: 'womenlist',
   path: '/womenlist/:id',
-  component: () => import('@/views/womenlist/womenlist'),
+  component: () =>
+    import('@/views/womenlist/womenlist'),
   props: true
 },
 {
@@ -70,13 +71,15 @@ const routes = [{
 {
   name: 'menlist',
   path: '/menlist/:id',
-  component: () => import('@/views/menlist/menlist'),
+  component: () =>
+    import('@/views/menlist/menlist'),
   props: true
 },
 {
   name: 'menlist',
   path: '/menlist/:id',
-  component: () => import('@/views/menlist/menlist'),
+  component: () =>
+    import('@/views/menlist/menlist'),
   props: true
 },
 {
@@ -95,21 +98,24 @@ const routes = [{
 {
   name: 'lifelist',
   path: '/lifelist/:id',
-  component: () => import('@/views/lifelist/lifelist'),
+  component: () =>
+    import('@/views/lifelist/lifelist'),
   props: true
 },
 // 家具详情页路由
 {
   name: 'lifedetail',
   path: '/lifelist/:id/:id2',
-  component: () => import('@/views/lifelist/lifedetail/lifedetial'),
+  component: () =>
+    import('@/views/lifelist/lifedetail/lifedetial'),
   props: true
 },
 // 婴儿列表页路由
 {
   name: 'kidslist',
   path: '/kidslist/:id',
-  component: () => import('@/views/kidslist/kidslist'),
+  component: () =>
+    import('@/views/kidslist/kidslist'),
   props: true
 },
 {
@@ -123,6 +129,10 @@ const routes = [{
   component: () =>
     import('@/views/upcoming.vue')
 
+},
+{
+  path: '*',
+  redirect: '/home' // 所有都匹配不上就直接返回首页
 }
 ]
 

@@ -1,6 +1,6 @@
 <template>
      <div class="detailtitle">
-        <div class="title">
+        <div class="title" v-show="isShow">
           <p>
             <i class="iconfont icon-icon-" @click="handleBack"></i>
             <span>{{title}}</span>
@@ -14,7 +14,7 @@
             </div>
         </div>
         <div class="goodsList">
-          <div>
+          <div class="Discount">
             <p>满减</p>
             <p>上新</p>
           </div>
@@ -63,15 +63,12 @@ export default {
   props: ['id'],
   data () {
     return {
+      isShow: true,
       gList: [],
       title: '',
       i: 0
     }
   },
-  // mounted () {
-  //   window.addEventListener('scroll', this.handleScroll, true)
-  //   // 监听（绑定）滚轮 滚动事件
-  // },
   computed: {
     sort1 () {
       return sortByKey(this.gList, 'saleableQty')
@@ -92,8 +89,10 @@ export default {
       this.i = scrollTop
       if (scroll < 0) {
         // console.log('up')
+        this.isShow = false
       } else {
         // console.log('down')
+        this.isShow = true
       }
     },
     handleBack () {
@@ -139,6 +138,7 @@ function sortByKey (array, key) {
 
     background: #fff;
     .title{
+      transition: all 0.8s ease;
       box-sizing: border-box;
       padding: 0 0.15rem;
       height:.8rem;
@@ -163,6 +163,9 @@ function sortByKey (array, key) {
     }
     .goodsList{
       overflow-y: auto;
+      // .Discount{
+      //   // display: flex;
+      // }
         .cont{
           display: flex;
           justify-content: space-between;
